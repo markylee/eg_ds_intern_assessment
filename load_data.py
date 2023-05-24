@@ -24,3 +24,17 @@ def sql_to_df(query: str, columns: list) -> pd.DataFrame:
     #preliminary changing LeagueIndex to categorical variable
     df['LeagueIndex'] = df.LeagueIndex.astype('category')
     return df 
+
+
+def load_everything() -> pd.DataFrame:
+    '''
+    Loads the default selection of every column and row from the starcraft data
+    '''
+    query = '''
+        SELECT * FROM starcraft_player_data
+        '''
+    columns = ["GameID","LeagueIndex","Age","HoursPerWeek", "TotalHours", 
+           "APM","SelectByHotkeys","AssignToHotkeys","UniqueHotkeys","MinimapAttacks",
+           "MinimapRightClicks","NumberOfPACs","GapBetweenPACs","ActionLatency","ActionsInPAC",
+           "TotalMapExplored","WorkersMade","UniqueUnitsMade","ComplexUnitsMade","ComplexAbilitiesUsed"]
+    return sql_to_df(query, columns)
