@@ -1,1 +1,1 @@
-# eg_ds_intern_assessment
+# EG Intern Data Assessment
